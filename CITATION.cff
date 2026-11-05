@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Sichang shoreline: reference-calibrated optical–SAR shoreline change pipeline"
+version: 1.0.0
+license: MIT
+authors:
+  - family-names: Tanachaichoksirikun
+    given-names: Pinit
+    affiliation: "King Mongkut's Institute of Technology Ladkrabang, Thailand"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+keywords:
+  - shoreline change
+  - Google Earth Engine
+  - Landsat
+  - Sentinel-1
+  - Sentinel-2
+  - small islands

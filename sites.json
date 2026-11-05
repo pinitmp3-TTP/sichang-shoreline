@@ -1,0 +1,127 @@
+{
+  "_comment": "Single source of truth for all scripts. Boxes placed from ESA WorldCover 2021 coastline + published coordinates of each named site (500 m boxes, shifted 80 m seaward so the coast sits mid-box). box = [lon_min, lat_min, lon_max, lat_max] WGS84. type: beach | modified | rock (rock = never tide-corrected, no SAR). role: target | control. slope = tan(beta) for tidal correction (0.06 placeholder; replace with CoastSat.slope). break_year: 'auto' screens for an abrupt change, a year fixes it, null skips. start_year: drop scenes before this year (decide after the first run from results/<site>/scenes_per_year.csv). s1: filled by 00_data_inventory.py (orbit with most scenes); 'auto' lets 04 pick it itself. ee_project: your Google Cloud project with Earth Engine enabled (the ONLY value you must edit before running).",
+  "ee_project": "your-ee-project",
+  "aoi": [
+    100.7909,
+    13.1179,
+    100.8279,
+    13.1875
+  ],
+  "start_year": 1988,
+  "s1": {
+    "pass": "DESCENDING",
+    "orbit": 62
+  },
+  "drive_folder": "GEE_Sichang",
+  "transect_spacing_m": {
+    "beach": 25,
+    "modified": 25,
+    "rock": 25
+  },
+  "sites": {
+    "hat_tham_phang": {
+      "box": [
+        100.80394,
+        13.14304,
+        100.80858,
+        13.14759
+      ],
+      "type": "beach",
+      "role": "target",
+      "slope": 0.203,
+      "break_year": null,
+      "note": "sandy pocket beach, west coast"
+    },
+    "tha_yai_thim": {
+      "box": [
+        100.80982,
+        13.12469,
+        100.81446,
+        13.12924
+      ],
+      "type": "beach",
+      "role": "target",
+      "slope": 0.28,
+      "break_year": null,
+      "note": "south tip; low-tide sand bar ('thale waek') - tide correction matters"
+    },
+    "hin_muat_sila": {
+      "box": [
+        100.80626,
+        13.17212,
+        100.81091,
+        13.17667
+      ],
+      "type": "modified",
+      "role": "target",
+      "slope": 0.135,
+      "break_year": 2018,
+      "note": "rocky/gravel beach; Novotel construction began 2017-2018 (Google Earth 4/2017 vs 11/2018)"
+    },
+    "tha_wang": {
+      "box": [
+        100.81624,
+        13.14829,
+        100.82088,
+        13.15284
+      ],
+      "type": "modified",
+      "role": "target",
+      "slope": 0.093,
+      "break_year": null,
+      "note": "Phra Chudadhut palace frontage, Atsadang bridge"
+    },
+    "laem_ngu": {
+      "box": [
+        100.81513,
+        13.13188,
+        100.81977,
+        13.13643
+      ],
+      "type": "modified",
+      "role": "target",
+      "slope": null,
+      "break_year": null,
+      "note": "headland next to the green pier (saphan khiao)"
+    },
+    "town_harbour": {
+      "box": [
+        100.8082,
+        13.15937,
+        100.81284,
+        13.16392
+      ],
+      "type": "modified",
+      "role": "target",
+      "slope": 0.094,
+      "break_year": 2011,
+      "note": "AUTO-PLACED on densest coastal built-up (main town/piers) - confirm"
+    },
+    "chong_khao_khat": {
+      "box": [
+        100.79789,
+        13.16022,
+        100.80253,
+        13.16477
+      ],
+      "type": "rock",
+      "role": "target",
+      "slope": null,
+      "break_year": null,
+      "note": "eroding rock slope, west coast - cliff-retreat target, not a control"
+    },
+    "rock_control": {
+      "box": [
+        100.79818,
+        13.17185,
+        100.80282,
+        13.1764
+      ],
+      "type": "rock",
+      "role": "control",
+      "slope": null,
+      "break_year": null,
+      "note": "AUTO-PLACED undeveloped forested cliff, NW lobe - precision control, confirm"
+    }
+  }
+}

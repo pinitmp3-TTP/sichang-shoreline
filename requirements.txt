@@ -1,0 +1,10 @@
+earthengine-api>=1.7
+utide>=0.4
+pdfplumber
+pandas
+numpy
+scipy
+geopandas>=1.0
+shapely>=2.0
+pyproj
+rasterio>=1.4

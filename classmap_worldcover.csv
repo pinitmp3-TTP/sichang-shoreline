@@ -1,0 +1,13 @@
+code,name,developed
+0,no_data,
+10,tree_cover,0
+20,shrubland,0
+30,grassland,0
+40,cropland,1
+50,built_up,1
+60,bare_sparse,0
+70,snow_ice,0
+80,water,
+90,herbaceous_wetland,0
+95,mangroves,0
+100,moss_lichen,0
