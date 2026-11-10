@@ -22,6 +22,8 @@ The pipeline extracts waterlines from Landsat 5/7/8/9, Sentinel-2 and Sentinel-1
 | `10_estimate_slope.py` | Beach slope from the tide–position regression |
 | `11_vessels_s1_gee.py`, `12_vessel_analysis.py` | Vessel presence from Sentinel-1 and comparison with shoreline change |
 | `13_disturbance_area.py` | Disturbance footprints from digitised polygons |
+| `14_disturbance_vs_shoreline.py` | Compares disturbance footprints with shoreline displacement between VHR epochs (site and transect scales) |
+| `sichang_footprints_v2.kml` | Disturbance footprints digitised at block level from VHR imagery at four epochs (polygons only; no imagery redistributed) |
 | `run_pipeline.py` | Runs 07 → 03 → 05 → 06 for all sites and writes the summary |
 | `Sichang_Colab.ipynb` | Step-by-step notebook for Google Colab |
 | `sichang_tide_coef.pkl` | Fitted UTide coefficients for Ko Si Chang |
