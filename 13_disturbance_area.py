@@ -7,6 +7,7 @@ classes:
   building   roofs and built platforms on land
   paved      roads, car parks, paved yards
   cleared    bare or graded ground cleared by people (not natural rock or beach)
+  pond       excavated detention pond or reservoir
   structure  coastal structures: piers, jetties, seawalls, revetments, reclaimed land
 An epoch with nothing to digitise is recorded by one polygon named <site>_<date>_none
 (any small shape) so that "zero" is not confused with "missing".
@@ -21,9 +22,9 @@ from shapely.ops import unary_union
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-CLASSES = ["building", "paved", "cleared", "structure"]
-COLORS = {"building": "#b91c1c", "paved": "#6b7280", "cleared": "#d97706", "structure": "#1d4ed8"}
-NAME_RE = re.compile(r"^([a-z_]+?)_(\d{8})_(building|paved|cleared|structure|none)(?:_\w+)?$")
+CLASSES = ["building", "paved", "cleared", "structure", "pond"]
+COLORS = {"building": "#b91c1c", "paved": "#6b7280", "cleared": "#d97706", "structure": "#1d4ed8", "pond": "#0d9488"}
+NAME_RE = re.compile(r"^([a-z_]+?)_(\d{8})_(building|paved|cleared|structure|pond|none)(?:_\w+)?$")
 
 
 def read_kml(path):
@@ -71,8 +72,8 @@ def main():
         if os.path.exists(bl_path):
             bl = gpd.read_file(bl_path).to_crs(32647).geometry.union_all()
             band = bl.buffer(a.band).intersection(bx)
-        taken = None   # overlaps go to the higher-priority class: structure > building > paved > cleared
-        for cls in ["structure", "building", "paved", "cleared"]:
+        taken = None   # overlaps go to the higher-priority class: structure > building > pond > paved > cleared
+        for cls in ["structure", "building", "pond", "paved", "cleared"]:
             geoms = [x for x in grp[grp.cls == cls].geometry if x is not None]
             u = unary_union(geoms).intersection(bx) if geoms else None
             if u is not None and taken is not None:
