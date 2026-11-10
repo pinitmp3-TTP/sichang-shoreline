@@ -34,6 +34,11 @@ The pipeline extracts waterlines from Landsat 5/7/8/9, Sentinel-2 and Sentinel-1
 1. Open `Sichang_Colab.ipynb` in Google Colab and put this folder in Google Drive.
 2. Set `ee_project` in `sites.json`.
 3. Run the cells in order: Earth Engine exports (04) go to `My Drive/<drive_folder>`; when they finish, `run_pipeline.py` computes rates and the summary.
+4. 4. Optional analyses, after `run_pipeline.py`:
+   * vessel presence: run `11_vessels_s1_gee.py` (Earth Engine export to `My Drive/<drive_folder>`), then
+     `python 12_vessel_analysis.py --csv "<path to>/vessels_s1.csv" --results results`
+   * disturbance footprints: `python 13_disturbance_area.py sichang_footprints_v2.kml --results results`, then
+     `python 14_disturbance_vs_shoreline.py sichang_footprints_v2.kml --results results`
 
 Requirements are listed in `requirements.txt`.
 
